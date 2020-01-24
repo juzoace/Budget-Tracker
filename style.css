@@ -285,7 +285,8 @@ h2 {
 }
 
 /* Css Modal pop-up */
-
+.modal3,
+.modal2,
 .modal {
     position: fixed;
     left: 0;
@@ -298,6 +299,9 @@ h2 {
     transform: scale(1.1);
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
+
+.modal__content3,
+.modal__content2,
 .modal__content {
     position: absolute;
     top: 50%;
@@ -322,6 +326,10 @@ h2 {
     background-color: darkgray;
 } */
 
+.modal__content-button3:link,
+.modal__content-button3:visited,
+.modal__content-button2:link,
+.modal__content-button2:visited,
 .modal__content-button:link,
 .modal__content-button:visited {
     
@@ -341,14 +349,21 @@ h2 {
     
 }
 
+.modal__content-button3:active,
+.modal__content-button2:active,
 .modal__content-button:active {
     transform: translateY(-1px);   
 }
 
+.modal__content-button3:hover,
+.modal__content-button2:hover,
 .modal__content-button:hover {
     background-color: #0000cc;
 }
 
+.show-modal3,
+.show-modal2,
+.show-modal1,
 .show-modal {
     opacity: 1;
     visibility: visible;

@@ -8,6 +8,10 @@ class Expense {
 
     updateExpenseDataStructure(input) {
         this.expenses.push(input.value);
-        console.log(this.expenses);
+        
+        let convertedExpenses = this.expenses.map(Number);
+        let reducedExpense = convertedExpenses.reduce((total, amount) => total + amount);
+
+        console.log(reducedExpense);
     }
 }

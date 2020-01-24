@@ -12,7 +12,9 @@ class Income {
         
         //Convert to integer
         let convertedIncome = this.income.map(Number);
-        console.log(convertedIncome);
+        let reducedIncome = convertedIncome.reduce((total, amount) => total + amount);
+
+        console.log(reducedIncome);
 
 
 
