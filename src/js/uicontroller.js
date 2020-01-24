@@ -3,8 +3,9 @@ class Uicontroller {
         this.type = '.add__type' ;
         this.description = '.add__description';
         this.value = '.add__value';
-        this.inputBtn = '.add__btn'
-        this.deleteItembtn = 'item__delete--btn'
+        this.inputBtn = '.add__btn';
+        this.deleteItembtn = '.item__delete--btn';
+        this.insertUlLi = '.container clearfix';
     }
 
     inputfromForm() {
@@ -25,11 +26,35 @@ class Uicontroller {
        description: this.description,
        value: this.value,
        inputBtn: this.inputBtn,
-       deleteItembtn: this.deleteItembtn 
+       deleteItembtn: this.deleteItembtn,
+       insertUlLi: this.insertUlLi 
         }
     }
 
-    displayOnUi(input) {
+    displayOnUi(input, transactionType) {
+        // create li element
+        const li = document.createElement('li');
 
+        //Add Class
+        li.className = 'transaction-item';
+
+        // Add ID
+        li.id = `input-${input.uniqueId}`;
+
+        
+        
+        // Add HTML
+        li.innerHTML = `<strong> ${transactionType} Transaction</strong> <em> ${input.description}.</em>
+        <a href="#" class="item-delete">
+            <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+        </a>
+        `;
+
+        // Insert Item
+        document.querySelector('.container').insertAdjacentElement('beforeend', li);
+
+        //ClearInputField
+        document.querySelector(this.value).value = '';
+        document.querySelector(this.description).value = '';
     }
 }
