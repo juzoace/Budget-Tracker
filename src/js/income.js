@@ -8,13 +8,14 @@ class Income {
 
     updateIncomeDataStructure(input) {
         this.income.push(input.value);
-        console.log(this.income);
+        // console.log(this.income);
         
         //Convert to integer
         let convertedIncome = this.income.map(Number);
-        let reducedIncome = convertedIncome.reduce((total, amount) => total + amount);
+        let reducedIncome = convertedIncome.reduce((total, amount) => total += amount);
 
-        console.log(reducedIncome);
+       
+        return reducedIncome;
 
 
 

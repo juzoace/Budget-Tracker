@@ -1,9 +1,8 @@
 
 const uicontroller = new Uicontroller;
-const budget = new Budget;
 const expense = new Expense;
 const income = new Income;
-
+const budget = new Budget;
 // Add Items from form
     const controllerAddItem = function() {
         // input from form
@@ -29,23 +28,34 @@ const income = new Income;
        if ( input.type === 'exp') {
     
         // Update expense data structure;
-            expense.updateExpenseDataStructure(input);
+            // expense.updateExpenseDataStructure(input);
     
+            let receivedIncomeOrExpenseValue = expense.updateExpenseDataStructure(input);
+            console.log(receivedIncomeOrExpenseValue);
+
             // Update the UI
             const transactionType = 'Income'
             uicontroller.displayOnUi(input, transactionType);
     
-            //Update the input field
+            //Update budget controller
+            budget.budgetCalculations(input, receivedIncomeOrExpenseValue);
+
         } else if( input.type === 'inc' ){
              
             // Update expense data structure;
-            income.updateIncomeDataStructure(input);
+           // income.updateIncomeDataStructure(input);
     
-             // Update the UI
+            let receivedIncomeOrExpenseValue = income.updateIncomeDataStructure(input);
+             
+            // Update the UI
              const transactionType = 'Expense';
              uicontroller.displayOnUi(input, transactionType);
+
+             // update budget controller
+            budget.budgetCalculations(input, receivedIncomeOrExpenseValue);
         }
 
+        // Update budget controller
     }
 // Delete Item from transaction history
 const controllerDeleteItem = function() {

@@ -10,8 +10,9 @@ class Expense {
         this.expenses.push(input.value);
         
         let convertedExpenses = this.expenses.map(Number);
-        let reducedExpense = convertedExpenses.reduce((total, amount) => total + amount);
+        let reducedExpense = convertedExpenses.reduce((total, amount) => total += amount, 0);
 
         console.log(reducedExpense);
+        return reducedExpense;
     }
 }
