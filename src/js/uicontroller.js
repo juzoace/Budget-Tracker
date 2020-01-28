@@ -31,12 +31,23 @@ class Uicontroller {
         }
     }
 
-    displayOnUi(input, transactionType) {
+    displayOnUi(input, transactionType, type) {
         // create li element
         const li = document.createElement('li');
-
-        //Add Class
-        li.className = 'transaction-item';
+        //Add Classletclassdeterinethecolorofthetransaction
+        // if (type === "inc") {           
+        //     li.className = "inc-item";
+        // } 
+        
+        // else if(input.type==="esp") {
+        //     li.className = "esp-item";
+        // }
+        
+        // if() {
+        //    //posiblethedeleteitekey       
+        //  }
+        
+        li.className = `${type}-item`
 
         // Add ID
         li.id = `input-${input.uniqueId}`;
@@ -45,8 +56,8 @@ class Uicontroller {
         
         // Add HTML
         li.innerHTML = `<strong> ${transactionType} Transaction</strong> <em> ${input.description}.</em>
-        <a href="#" class="item-delete">
-            <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+        <a href="#" class="item-delete" data-id="${input.uniqueId}">
+            <i class="fa fa-remove"></i>
         </a>
         `;
 

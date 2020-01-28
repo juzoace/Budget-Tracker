@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../../src/css/scss/layout/layout/header.scss"
+    ],
+    "names": [],
+    "file": "header.min.css"
+}

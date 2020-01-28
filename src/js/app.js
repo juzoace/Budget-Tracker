@@ -25,34 +25,41 @@ const budget = new Budget;
         }
         
         // Test for type
-       if ( input.type === 'exp') {
+       if ( input.type === 'inc') {
     
         // Update expense data structure;
             // expense.updateExpenseDataStructure(input);
     
-            let receivedIncomeOrExpenseValue = expense.updateExpenseDataStructure(input);
+            let receivedIncomeOrExpenseValue = income.updateIncomeDataStructure(input);
             console.log(receivedIncomeOrExpenseValue);
 
             // Update the UI
             const transactionType = 'Income'
-            uicontroller.displayOnUi(input, transactionType);
+            
+            let type = input.type;
+            
+            uicontroller.displayOnUi(input, transactionType, type);
     
             //Update budget controller
-            budget.budgetCalculations(input, receivedIncomeOrExpenseValue);
+            budget.budgetCalculations(input, receivedIncomeOrExpenseValue, type);
 
-        } else if( input.type === 'inc' ){
+        } else if( input.type === 'esp' ){
              
             // Update expense data structure;
            // income.updateIncomeDataStructure(input);
     
-            let receivedIncomeOrExpenseValue = income.updateIncomeDataStructure(input);
-             
+            let receivedIncomeOrExpenseValue = expense.updateExpenseDataStructure(input);
+            console.log(receivedIncomeOrExpenseValue);
+            
             // Update the UI
              const transactionType = 'Expense';
-             uicontroller.displayOnUi(input, transactionType);
+             
+             let type = input.type;
+             
+             uicontroller.displayOnUi(input, transactionType, type);
 
              // update budget controller
-            budget.budgetCalculations(input, receivedIncomeOrExpenseValue);
+            budget.budgetCalculations(input, receivedIncomeOrExpenseValue, type);
         }
 
         // Update budget controller

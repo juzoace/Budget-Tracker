@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../../src/css/scss/base/base/typography.scss"
+    ],
+    "names": [],
+    "file": "typography.min.css"
+}
