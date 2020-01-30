@@ -7,6 +7,7 @@ const budget = new Budget;
     const controllerAddItem = function() {
         // input from form
         const input = uicontroller.inputfromForm();
+        console.log(input);
         const errors = [];
 
         if (!input.value) {
@@ -41,9 +42,14 @@ const budget = new Budget;
             uicontroller.displayOnUi(input, transactionType, type);
     
             //Update budget controller
-            budget.budgetCalculations(input, receivedIncomeOrExpenseValue, type);
+            let budgetValues = budget.budgetCalculations(input, receivedIncomeOrExpenseValue, type);
 
-        } else if( input.type === 'esp' ){
+            // Update the UI
+            document.querySelector(".budget__value").innerHTML = `$${budgetValues.currentBalance}`;
+            document.querySelector(".budget__income--value").innerHTML = `$${budgetValues.income}`;
+            document.querySelector(".budget__expenses--value").innerHTML = `$${budgetValues.expense}`;
+
+        } else if ( input.type === 'exp' ) {
              
             // Update expense data structure;
            // income.updateIncomeDataStructure(input);
@@ -59,14 +65,69 @@ const budget = new Budget;
              uicontroller.displayOnUi(input, transactionType, type);
 
              // update budget controller
-            budget.budgetCalculations(input, receivedIncomeOrExpenseValue, type);
-        }
+             let budgetValues = budget.budgetCalculations(input, receivedIncomeOrExpenseValue, type);
+
+             console.log(budget.currentBalance);
+
+
+             // Update the UI
+            document.querySelector(".budget__value").innerHTML = `$${budgetValues.currentBalance}`;
+            document.querySelector(".budget__income--value").innerHTML = `$${budgetValues.income}`;
+            document.querySelector(".budget__expenses--value").innerHTML = `$${budgetValues.expense}`;
+
+            }
 
         // Update budget controller
     }
 // Delete Item from transaction history
-const controllerDeleteItem = function() {
+const controllerDeleteItem = function(e) {
+    // e.preventDefault();
+    console.log(e.target);
+
+   
+
+    let itemId = e.target.parentNode.parentNode.id;
+    console.log(itemId);
+     // REMOVE FROM THE DOM
+     document.querySelector(`#${itemId}`).style.display = `none`;
+
+    // String(itemId);
+    // console.log(itemId);
+
+    let arrId = itemId.split("-");
+   
+    let convertedArrId = arrId.map(Number);
+    // console.log(convertedArrId);
+
+    let finalarrid = convertedArrId[1];
+    console.log(finalarrid);
+
+    let finalAmount = convertedArrId[2];
+    console.log(finalAmount);
+
+    let itemclass = e.target.parentNode.parentNode.className;
+    console.log(itemclass);
+
+
     
+    if (itemclass === "inc-item") {
+
+        // update income data structure
+
+
+    } else if (itemclass === "exp-item") {
+
+        // update expense data structure
+
+    } else {
+
+        // Tell user to properly click the delete button
+
+    }
+    // const id = e.target.parentElement.dataset.id;
+    // console.log(id);
+    // Remove from the Dom
+    // document.querySelector()
 }
 
 
@@ -82,16 +143,16 @@ okayButton.addEventListener('click', (e) => e.target.closest('.modal').classList
 
 
 
-
 document.addEventListener('keypress', function() {
     if (event.keyCode === 13 || event.which === 13) {
         controllerAddItem();
     }
 });
 
-
+// document.querySelector().addEventListener('click', );
 
     
+document.querySelector("#home").addEventListener('click', controllerDeleteItem);
 
 
 

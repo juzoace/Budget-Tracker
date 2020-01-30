@@ -19,15 +19,25 @@ class Budget {
         // }
 
         if (input.type === 'inc') {
-            receivedIncomeOrExpenseValue = this.currentIncome;
+           this.currentIncome = receivedIncomeOrExpenseValue;
+            
+            console.log(this.currentIncome);
         } 
         if (input.type === 'exp') {
-            receivedIncomeOrExpenseValue = this.currentExpense;
+            this.currentExpense = receivedIncomeOrExpenseValue;
         }
 
         let balance = this.currentIncome - this.currentExpense;
-        console.log(this.currentIncome);
+        // console.log(this.currentIncome);
         console.log(balance);
+        
+        return {
+            income: this.currentIncome.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'),
+            expense: this.currentExpense.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'),
+            currentBalance: balance.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+        }
+
+       
     }
   
 }

@@ -6,6 +6,7 @@ class Uicontroller {
         this.inputBtn = '.add__btn';
         this.deleteItembtn = '.item__delete--btn';
         this.insertUlLi = '.container clearfix';
+        this.deleteBtn = ".fa";
     }
 
     inputfromForm() {
@@ -27,7 +28,8 @@ class Uicontroller {
        value: this.value,
        inputBtn: this.inputBtn,
        deleteItembtn: this.deleteItembtn,
-       insertUlLi: this.insertUlLi 
+       insertUlLi: this.insertUlLi ,
+       deleteBtn: this.deleteBtn
         }
     }
 
@@ -35,28 +37,29 @@ class Uicontroller {
         // create li element
         const li = document.createElement('li');
         //Add Classletclassdeterinethecolorofthetransaction
-        // if (type === "inc") {           
-        //     li.className = "inc-item";
-        // } 
+        if (type === "inc") {           
+            li.className = "inc-item";
+        } 
         
-        // else if(input.type==="esp") {
-        //     li.className = "esp-item";
-        // }
+        else if(type ==="exp") {
+            li.className = "exp-item";
+        }
         
+        console.log(li.className);
         // if() {
         //    //posiblethedeleteitekey       
         //  }
         
-        li.className = `${type}-item`
+        // li.className = `${type}-item`
 
         // Add ID
-        li.id = `input-${input.uniqueId}`;
+        li.id = `item-${input.uniqueId}-${input.value}`;
 
         
         
         // Add HTML
-        li.innerHTML = `<strong> ${transactionType} Transaction</strong> <em> ${input.description}.</em>
-        <a href="#" class="item-delete" data-id="${input.uniqueId}">
+        li.innerHTML = `<strong> ${transactionType} Transaction:   </strong>  ${input.description}.
+        ${input.value}<a href="#" class="item-delete" data-id="${input.uniqueId}-${input.value}">
             <i class="fa fa-remove"></i>
         </a>
         `;

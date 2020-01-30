@@ -337,7 +337,7 @@ h2 {
     margin-top: 15px; 
     margin-bottom: 10px;
     border-radius: 5px;
-    background-color: #3333ff;;
+    background-color: #56cadb;;
     color: white;
     font-size: 16px;
     font-weight: 600;
@@ -358,7 +358,7 @@ h2 {
 .modal__content-button3:hover,
 .modal__content-button2:hover,
 .modal__content-button:hover {
-    background-color: #0000cc;
+    background-color: #1f8493;
 }
 
 .show-modal3,
@@ -371,10 +371,28 @@ h2 {
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
-.fa-remove {
-    color: red;
-
+.item-delete {
+    /* position: absolute; */
 }
+
+.fa-remove {
+    color: white;
+    position: absolute;
+    right: 3rem;
+    transition: transform 0.3s ease;
+}
+
+
+.fa-remove:hover {
+    transform: scale(1.3);
+}
+
+.fa-remove:active {
+    transform: translateY(3px);    
+}
+
+
+
 /* .transaction-item{
     background-color:lightblue;
     
@@ -385,30 +403,59 @@ h2 {
 .inc-item,
 .inc-item:link,
 .inc-item:visited {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
         text-decoration: none;
-        padding: 1.5rem 4rem;
+        padding: .5rem 4rem;
         /* display: inline-block; */
         border-radius: 10rem;
         transition: all .2s;
-        background-color: blue;
+        background-color: #28b9b5;
         list-style:none;
+        margin-bottom: 10px; /*****fix later *****/
+        color: white;
+        position: relative;
+        /* position: absolute; */
+        /* text-align: center; */
+        transition: transform 0.3s ease;
 }
 
-.esp-item,
-.esp-item:link,
-.esp-item:visited {
-    text-transform: uppercase;
+.inc-item:hover {
+    background-color: #1f8493;
+    transform: scale(1.1);
+}
+
+.exp-item,
+.exp-item:link,
+.exp-item:visited {
+    /* text-transform: uppercase; */
         text-decoration: none;
-        padding: 1.5rem 4rem;
+        padding: .5rem 4rem;
         /* display: inline-block; */
+        /* display: block; */
         border-radius: 10rem;
         transition: all .2s;
-        background-color: red;
+        background-color: #ff5049;
         list-style:none;
+        margin-bottom: 10px; /*****fix later *****/
+        color: white;
+        position: relative;
+        /* position: absolute; */
+        transition: transform 0.3s ease;
+
 }
 
-   
+.exp-item:hover {
+    background-color: #cc0700;
+     transform: scale(1.1);
+}
+/* 
+.fa {
+    position: relative;
+    right: .5rem;
+}
+/* .container { */
+    /* position: absolute; */
+}   
 /* .btn {
     &,
     &:link,
