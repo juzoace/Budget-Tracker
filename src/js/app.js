@@ -44,7 +44,7 @@ const budget = new Budget;
             //Update budget controller
             let budgetValues = budget.budgetCalculations(input, receivedIncomeOrExpenseValue, type);
 
-            // Update the UI
+            // Update the UI Income, Expense and Budget
             document.querySelector(".budget__value").innerHTML = `$${budgetValues.currentBalance}`;
             document.querySelector(".budget__income--value").innerHTML = `$${budgetValues.income}`;
             document.querySelector(".budget__expenses--value").innerHTML = `$${budgetValues.expense}`;
@@ -62,7 +62,7 @@ const budget = new Budget;
              
              let type = input.type;
              
-             uicontroller.displayOnUi(input, transactionType, type);
+             uicontroller.displayItemsOnUi(input, transactionType, type);
 
              // update budget controller
              let budgetValues = budget.budgetCalculations(input, receivedIncomeOrExpenseValue, type);
@@ -81,21 +81,26 @@ const budget = new Budget;
     }
 // Delete Item from transaction history
 const controllerDeleteItem = function(e) {
-    // e.preventDefault();
+    e.preventDefault();
     console.log(e.target);
 
-   
-
+    
     let itemId = e.target.parentNode.parentNode.id;
     console.log(itemId);
-     // REMOVE FROM THE DOM
-     document.querySelector(`#${itemId}`).style.display = `none`;
 
+    if ( itemId ) {
+       
+    // REMOVE FROM THE DOM
+    document.querySelector(`#${itemId}`).style.display = 'none';
+
+
+    }
+     
     // String(itemId);
     // console.log(itemId);
 
     let arrId = itemId.split("-");
-   
+    console.log(arrId);
     let convertedArrId = arrId.map(Number);
     // console.log(convertedArrId);
 
@@ -113,24 +118,27 @@ const controllerDeleteItem = function(e) {
     if (itemclass === "inc-item") {
 
         // update income data structure
+        let updatedIdandIncomeArray = income.deleteItemFromIncomeDataStructure(finalarrid, finalAmount);
+        console.log(updatedIdandIncomeArray);
+        
+        // Update the DOM
+        uicontroller.updateTheDomAfterADeleteOperationOnIncome(updatedIdandIncomeArray);
 
-
-    } else if (itemclass === "exp-item") {
+    } 
+    
+    if (itemclass === "exp-item") {
 
         // update expense data structure
+        let updatedIdandExpensesArray = expense.deleteItemFromExpenseDataStructure(finalarrid, finalAmount);
 
-    } else {
+        // Update the DOM
+        uicontroller.updateTheDomAfterADeleteOperationOnExpenses( updatedIdandExpensesArray );
 
-        // Tell user to properly click the delete button
 
-    }
-    // const id = e.target.parentElement.dataset.id;
-    // console.log(id);
-    // Remove from the Dom
-    // document.querySelector()
+    } 
+    
+
 }
-
-
 
 
 //******Uicontroller method calls******/ 

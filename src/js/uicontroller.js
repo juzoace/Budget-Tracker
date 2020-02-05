@@ -33,7 +33,7 @@ class Uicontroller {
         }
     }
 
-    displayOnUi(input, transactionType, type) {
+    displayItemsOnUi(input, transactionType, type) {
         // create li element
         const li = document.createElement('li');
         //Add Classletclassdeterinethecolorofthetransaction
@@ -71,4 +71,88 @@ class Uicontroller {
         document.querySelector(this.value).value = '';
         document.querySelector(this.description).value = '';
     }
+
+    // updateTheDomAfterADeleteOperation() {
+    
+    //     if (updatedIdandIncomeArray) {
+
+    //         // Convert all values in the array from string to number 
+    //         let incomeArray = updatedIdandIncomeArray.updatedIdandIncomeArray.map(Number);
+
+    //         // Get the sum of all income-values in the IncomeArray 
+    //         let totalIncomeAfterEveryDeleteAction = incomeArray.reduce((total, amount) => total += amount);
+
+    //         // update the income DOM
+    //         document.querySelector('.budget__income--value').innerHtml = `${totalIncomeAfterEveryDeleteAction}`;
+    //     } 
+
+    //     if (updatedIdandExpensesArray ) {
+
+    //           // Convert all values in the array from string to number 
+    //           let expensesArray = updatedIdandExpensesArray.updatedIdandExpensesArray.map(Number);
+
+    //           // Get the sum of all income-values in the IncomeArray 
+    //           let totalExpensesAfterEveryDeleteAction = incomeArray.reduce((total, amount) => total += amount);
+  
+    //           // update the income DOM
+    //           document.querySelector('.budget__expenses--value').innerHtml = `${totalExpensesAfterEveryDeleteAction}`;
+   
+
+    //     }
+    
+        
+
+    // }
+
+   
+
+
+    updateTheDomAfterADeleteOperationOnIncome( updatedIdandIncomeArray ) {
+
+       // console.log(`worked`);
+        
+        if ( updatedIdandIncomeArray.updatedIncomeArray.length === 0 ) {
+            console.log(`worked`);
+        
+        // update the income DOM and set the income value to zero
+        document.getElementById("budget__income--value").innerHtml = `$0`;
+ 
+
+        }
+        
+        if ( updatedIdandIncomeArray.updatedIncomeArray.length > 0) {
+            
+        // // Get the sum of all income-values in the IncomeArray
+        // let totalIncomeAfterEveryDeleteAction = incomeArray.reduce((total, amount) => total += amount);
+        //     console.log(totalIncomeAfterEveryDeleteAction);
+
+        let incomeArray = updatedIdandIncomeArray.updatedIncomeArray.reduce((total, amount) => total += amount);//.map(Number);
+       
+
+        // // update the income DOM
+        console.log(incomeArray);
+        document.getElementById("budget__income--value")to  = incomeArray;
+ 
+
+        }
+       
+
+    }
+
+
+    updateTheDomAfterADeleteOperationOnExpenses( updatedIdandExpensesArray ) {
+
+        let expensesArray = updatedIdandExpensesArray.updatedExpensesArray.map(Number)
+
+        // Get the sum of all expenses-values in the expensesArray 
+        let totalExpensesAfterEveryDeleteAction = expensesArray.reduce((total, amount) => total += amount);
+  
+         // update the income DOM
+        document.querySelector('.budget__expenses--value').innerHtml = `${totalExpensesAfterEveryDeleteAction}`;
+   
+
+    }
+
+
+
 }
