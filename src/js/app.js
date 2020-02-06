@@ -31,31 +31,39 @@ const budget = new Budget;
         // Update expense data structure;
             // expense.updateExpenseDataStructure(input);
     
-            let receivedIncomeOrExpenseValue = income.updateIncomeDataStructure(input);
-            console.log(receivedIncomeOrExpenseValue);
+            let receivedIncomeValue = income.updateIncomeDataStructure(input);
+            console.log(receivedIncomeValue);
 
             // Update the UI
             const transactionType = 'Income'
             
             let type = input.type;
             
-            uicontroller.displayOnUi(input, transactionType, type);
+            uicontroller.displayItemsOnUi(input, transactionType, type);
     
             //Update budget controller
-            let budgetValues = budget.budgetCalculations(input, receivedIncomeOrExpenseValue, type);
+            let budgetValues = budget.budgetCalculations(input, receivedIncomeValue);
 
-            // Update the UI Income, Expense and Budget
-            document.querySelector(".budget__value").innerHTML = `$${budgetValues.currentBalance}`;
-            document.querySelector(".budget__income--value").innerHTML = `$${budgetValues.income}`;
-            document.querySelector(".budget__expenses--value").innerHTML = `$${budgetValues.expense}`;
+            uicontroller.displayCalculatedValuesOnUi(budgetValues);
 
-        } else if ( input.type === 'exp' ) {
+            // // Update the UI Income, Expense and Budget
+            // document.querySelector(".budget__value").innerHTML = `$${budgetValues.currentBalance}`;
+            // document.querySelector(".budget__income--value").innerHTML = `$${budgetValues.income}`;
+            // document.querySelector(".budget__expenses--value").innerHTML = `$${budgetValues.expense}`;
+
+            // uicontroller.displayCalculatedValuesOnUi() {
+
+            // }
+            
+        } 
+        
+        if ( input.type === 'exp' ) {
              
             // Update expense data structure;
            // income.updateIncomeDataStructure(input);
     
-            let receivedIncomeOrExpenseValue = expense.updateExpenseDataStructure(input);
-            console.log(receivedIncomeOrExpenseValue);
+            let receivedExpenseValue = expense.updateExpenseDataStructure(input);
+            console.log(receivedExpenseValue);
             
             // Update the UI
              const transactionType = 'Expense';
@@ -65,16 +73,14 @@ const budget = new Budget;
              uicontroller.displayItemsOnUi(input, transactionType, type);
 
              // update budget controller
-             let budgetValues = budget.budgetCalculations(input, receivedIncomeOrExpenseValue, type);
+             let budgetValues = budget.budgetCalculations(input, receivedExpenseValue);
 
              console.log(budget.currentBalance);
 
 
              // Update the UI
-            document.querySelector(".budget__value").innerHTML = `$${budgetValues.currentBalance}`;
-            document.querySelector(".budget__income--value").innerHTML = `$${budgetValues.income}`;
-            document.querySelector(".budget__expenses--value").innerHTML = `$${budgetValues.expense}`;
-
+             uicontroller.displayCalculatedValuesOnUi( budgetValues );
+           
             }
 
         // Update budget controller
@@ -92,7 +98,6 @@ const controllerDeleteItem = function(e) {
        
     // REMOVE FROM THE DOM
     document.querySelector(`#${itemId}`).style.display = 'none';
-
 
     }
      
@@ -117,22 +122,32 @@ const controllerDeleteItem = function(e) {
     
     if (itemclass === "inc-item") {
 
+
         // update income data structure
         let updatedIdandIncomeArray = income.deleteItemFromIncomeDataStructure(finalarrid, finalAmount);
         console.log(updatedIdandIncomeArray);
         
-        // Update the DOM
-        uicontroller.updateTheDomAfterADeleteOperationOnIncome(updatedIdandIncomeArray);
 
+        // update budget data structure
+        let budgetValues = budget.budgetCalculations( updatedIdandIncomeArray, 0 );
+
+
+        // Update the DOM
+        //uicontroller.updateTheDomAfterADeleteOperationOnIncome(updatedIdandIncomeArray);
+        uicontroller.displayCalculatedValuesOnUi(budgetValues);
     } 
     
     if (itemclass === "exp-item") {
 
         // update expense data structure
         let updatedIdandExpensesArray = expense.deleteItemFromExpenseDataStructure(finalarrid, finalAmount);
+console.log(updatedIdandExpensesArray);
+
+        // update budget data structure
+        let budgetValues = budget.budgetCalculations(updatedIdandExpensesArray, 0); // change the zero later
 
         // Update the DOM
-        uicontroller.updateTheDomAfterADeleteOperationOnExpenses( updatedIdandExpensesArray );
+        uicontroller.displayCalculatedValuesOnUi( budgetValues );
 
 
     } 

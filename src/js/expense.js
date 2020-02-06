@@ -25,9 +25,9 @@ class Expense {
     deleteItemFromExpenseDataStructure(finalarrid, finalAmount) {
 
         // id check and delete
-
         let correspondingId = this.id.indexOf(finalarrid, 0);
         
+        //
         this.id.splice(correspondingId, 1);
         console.log(this.id);
 
