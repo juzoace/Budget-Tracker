@@ -1,6 +1,7 @@
 
-const uicontroller = new Uicontroller;
+
 const expense = new Expense;
+const uicontroller = new Uicontroller;
 const income = new Income;
 const budget = new Budget;
 // Add Items from form
@@ -87,6 +88,7 @@ const budget = new Budget;
     }
 // Delete Item from transaction history
 const controllerDeleteItem = function(e) {
+    console.log(`worked`);
     e.preventDefault();
     console.log(e.target);
 
@@ -129,8 +131,9 @@ const controllerDeleteItem = function(e) {
         
 
         // update budget data structure
-        let budgetValues = budget.budgetCalculations( updatedIdandIncomeArray, 0 );
-
+        //let budgetValues = budget.budgetCalculations( updatedIdandIncomeArray, 0 );
+          let  budgetValues = budget.budgetCalculationsForIncomeDeletion( updatedIdandIncomeArray );
+   
 
         // Update the DOM
         //uicontroller.updateTheDomAfterADeleteOperationOnIncome(updatedIdandIncomeArray);
@@ -141,10 +144,11 @@ const controllerDeleteItem = function(e) {
 
         // update expense data structure
         let updatedIdandExpensesArray = expense.deleteItemFromExpenseDataStructure(finalarrid, finalAmount);
-console.log(updatedIdandExpensesArray);
+        console.log(updatedIdandExpensesArray);
 
         // update budget data structure
-        let budgetValues = budget.budgetCalculations(updatedIdandExpensesArray, 0); // change the zero later
+        //let budgetValues = budget.budgetCalculations(updatedIdandExpensesArray, 0); // change the zero later
+          let budgetValues = budget.budgetCalculationsForExpenseDeletion (updatedIdandExpensesArray);  
 
         // Update the DOM
         uicontroller.displayCalculatedValuesOnUi( budgetValues );
