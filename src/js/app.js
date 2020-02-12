@@ -1,14 +1,14 @@
-
-
 const expense = new Expense;
 const uicontroller = new Uicontroller;
 const income = new Income;
 const budget = new Budget;
+
 // Add Items from form
     const controllerAddItem = function() {
+
         // input from form
         const input = uicontroller.inputfromForm();
-        console.log(input);
+        
         const errors = [];
 
         if (!input.value) {
@@ -22,7 +22,6 @@ const budget = new Budget;
             document.querySelector('.modal .modal__content-heading').innerHTML = errors.join('<br>');
             document.querySelector('.modal').classList.toggle('show-modal');
 
-            console.log(document.querySelector('.modal3'));
             return;
         }
         
@@ -30,10 +29,7 @@ const budget = new Budget;
        if ( input.type === 'inc') {
     
         // Update expense data structure;
-            // expense.updateExpenseDataStructure(input);
-    
             let receivedIncomeValue = income.updateIncomeDataStructure(input);
-            console.log(receivedIncomeValue);
 
             // Update the UI
             const transactionType = 'Income'
@@ -46,25 +42,12 @@ const budget = new Budget;
             let budgetValues = budget.budgetCalculations(input, receivedIncomeValue);
 
             uicontroller.displayCalculatedValuesOnUi(budgetValues);
-
-            // // Update the UI Income, Expense and Budget
-            // document.querySelector(".budget__value").innerHTML = `$${budgetValues.currentBalance}`;
-            // document.querySelector(".budget__income--value").innerHTML = `$${budgetValues.income}`;
-            // document.querySelector(".budget__expenses--value").innerHTML = `$${budgetValues.expense}`;
-
-            // uicontroller.displayCalculatedValuesOnUi() {
-
-            // }
             
         } 
         
         if ( input.type === 'exp' ) {
-             
-            // Update expense data structure;
-           // income.updateIncomeDataStructure(input);
     
             let receivedExpenseValue = expense.updateExpenseDataStructure(input);
-            console.log(receivedExpenseValue);
             
             // Update the UI
              const transactionType = 'Expense';
@@ -84,15 +67,13 @@ const budget = new Budget;
            
             }
 
-        // Update budget controller
+        
     }
 // Delete Item from transaction history
 const controllerDeleteItem = function(e) {
-    console.log(`worked`);
-    e.preventDefault();
-    console.log(e.target);
 
-    
+    e.preventDefault();
+
     let itemId = e.target.parentNode.parentNode.id;
     console.log(itemId);
 
@@ -103,13 +84,10 @@ const controllerDeleteItem = function(e) {
 
     }
      
-    // String(itemId);
-    // console.log(itemId);
 
     let arrId = itemId.split("-");
-    console.log(arrId);
+    
     let convertedArrId = arrId.map(Number);
-    // console.log(convertedArrId);
 
     let finalarrid = convertedArrId[1];
     console.log(finalarrid);
@@ -118,25 +96,16 @@ const controllerDeleteItem = function(e) {
     console.log(finalAmount);
 
     let itemclass = e.target.parentNode.parentNode.className;
-    console.log(itemclass);
-
-
     
     if (itemclass === "inc-item") {
 
-
         // update income data structure
         let updatedIdandIncomeArray = income.deleteItemFromIncomeDataStructure(finalarrid, finalAmount);
-        console.log(updatedIdandIncomeArray);
-        
 
         // update budget data structure
-        //let budgetValues = budget.budgetCalculations( updatedIdandIncomeArray, 0 );
           let  budgetValues = budget.budgetCalculationsForIncomeDeletion( updatedIdandIncomeArray );
    
-
         // Update the DOM
-        //uicontroller.updateTheDomAfterADeleteOperationOnIncome(updatedIdandIncomeArray);
         uicontroller.displayCalculatedValuesOnUi(budgetValues);
     } 
     
@@ -144,23 +113,17 @@ const controllerDeleteItem = function(e) {
 
         // update expense data structure
         let updatedIdandExpensesArray = expense.deleteItemFromExpenseDataStructure(finalarrid, finalAmount);
-        console.log(updatedIdandExpensesArray);
 
         // update budget data structure
-        //let budgetValues = budget.budgetCalculations(updatedIdandExpensesArray, 0); // change the zero later
-          let budgetValues = budget.budgetCalculationsForExpenseDeletion (updatedIdandExpensesArray);  
+        let budgetValues = budget.budgetCalculationsForExpenseDeletion (updatedIdandExpensesArray);  
 
         // Update the DOM
         uicontroller.displayCalculatedValuesOnUi( budgetValues );
 
-
     } 
     
-
 }
 
-
-//******Uicontroller method calls******/ 
 
 
 // Add input eventhandler
@@ -169,14 +132,11 @@ var okayButton = document.querySelector(".modal__content-button");
 okayButton.addEventListener('click', (e) => e.target.closest('.modal').classList.toggle('show-modal'));
 
 
-
 document.addEventListener('keypress', function() {
     if (event.keyCode === 13 || event.which === 13) {
         controllerAddItem();
     }
 });
-
-// document.querySelector().addEventListener('click', );
 
     
 document.querySelector("#home").addEventListener('click', controllerDeleteItem);
