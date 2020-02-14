@@ -5,7 +5,7 @@ class Income {
     }
 
     updateIncomeDataStructure(input) {
-        
+
         // update income id
         this.id.push(input.uniqueId);
 
@@ -20,25 +20,30 @@ class Income {
     }
 
     deleteItemFromIncomeDataStructure(finalarrid, finalAmount) {
-        
-         // id check and delete
-         let correspondingId = this.id.indexOf(finalarrid, 0);
-        
-         this.id.splice(correspondingId, 1);
 
-         let updatedIdArray = this.id;
+        // id check and delete
+        let correspondingId = this.id.indexOf(finalarrid, 0);
 
-         // amount check and delete
-         let correspondingAmount = this.income.indexOf(finalAmount, 0);// Optimize later, (what if there are two expenses which have the same value and Id???......So think about a solution to such situation )
- 
-         this.income.splice(correspondingAmount, 1);
+        this.id.splice(correspondingId, 1);
 
-         let convertedIncome = this.income.map(Number);
-        
-         return {
+        let updatedIdArray = this.id;
+
+        let a = [];
+        a.push(finalAmount);
+
+        let amountInString = a.map(String);
+
+        // amount check and delete
+        let correspondingAmount = this.income.indexOf(amountInString[0], 0);
+
+        this.income.splice(correspondingAmount, 1);
+
+        let convertedIncome = this.income.map(Number);
+
+        return {
             id: updatedIdArray,
             updatedIncomeArray: convertedIncome
-         }
+        }
     }
 
 }

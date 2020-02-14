@@ -1,104 +1,85 @@
 <!DOCTYPE html>
 <html lang="">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title></title>
-
-    
-    <link rel="stylesheet" href="src/css/scss/main.scss" type="text/css">
+    <title>Budget Application</title>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700,900" rel="stylesheet">
     <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="style.css" type="text/css">  
-    <link rel="icon" type="image/png" href="img/favicon.jpg">
+    <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 
 <body id="home" data-spy="scroll" data-target=".navbar">
-    
- 
     <div class="top">
         <div class="budget">
             <div class="budget__title">
                 Available Budget
             </div>
-            
+
             <div class="budget__value"></div>
-            
-            
+
             <div class="budget__income clearfix">
                 <div class="budget__income--text">Income</div>
                 <div class="right">
-                    <div class="budget__income--value" id="budget__income--value" >0</div>
+                    <div class="budget__income--value" id="budget__income--value">0</div>
                     <div class="budget__income--percentage">&nbsp;</div>
                 </div>
             </div>
-            
+
             <div class="budget__expenses clearfix">
                 <div class="budget__expenses--text">Expenses</div>
                 <div class="right clearfix">
                     <div class="budget__expenses--value" id="budget__expenses--value">0</div>
-                    
+
                 </div>
             </div>
         </div>
     </div>
-    
-    
-    
-    <div class="bottom">
-        <div class="add">
-            <div class="add__container">
-                <select class="add__type">
-                    <option value="inc" selected>+</option>
-                    <option value="exp">-</option>
-                </select>
-                <input type="text" class="add__description" placeholder="Add description">
-                <input type="number" class="add__value" placeholder="Value">
-                <button class="add__btn"><i class="ion-ios-checkmark-outline"></i></button>
+    <form @submit.prevent="controllerAddItem">
+        <div class="bottom">
+            <div class="add">
+                <div class="add__container">
+                    <select class="add__type">
+                        <option value="inc" selected>+</option>
+                        <option value="exp">-</option>
+                    </select>
+                    <input type="text" class="add__description" placeholder="Add description">
+                    <input type="number" class="add__value" placeholder="Value">
+                    <button class="add__btn"><i class="ion-ios-checkmark-outline"></i></button>
+                </div>
             </div>
         </div>
-          
-    </div>
+    </form>
 
+    <ul class="container clearfix"></ul>
 
-    <ul class="container clearfix">
-      
-    </ul>
-
-   <div class="modal">
-       <div class="modal__content">
-            <!-- <span class="close-button">×</span> -->
+    <div class="modal">
+        <div class="modal__content">
             <h1 class="modal__content-heading">Kindly add the description of your transaction!!!</h1>
-            <!-- <button type="button" class="modal__content-button">Okay</button> -->
             <a href="#" class="modal__content-button">Okay</a>
         </div>
     </div>
 
-<div class="modal2" id="modal-transaction-value">
-    <div class="modal__content2">
-        <!-- <span class="close-button">×</span> -->
-        <h1 class="modal__content-heading12">Kindly add the value of your transaction!!!</h1>
-        <!-- <button type="button" class="modal__content-button">Okay</button> -->
-        <a href="#" class="modal__content-button2">Okay</a>
+    <div class="modal2" id="modal-transaction-value">
+        <div class="modal__content2">
+            <h1 class="modal__content-heading12">Kindly add the value of your transaction!!!</h1>
+            <a href="#" class="modal__content-button2">Okay</a>
+        </div>
     </div>
-</div>
 
-<div class="modal3">
-    <div class="modal__content3">
-        <!-- <span class="close-button">×</span> -->
-        <h1 class="modal__content-heading13">Kindly add the description and value of your transaction!!!</h1>
-        <!-- <button type="button" class="modal__content-button">Okay</button> -->
-        <a href="#" class="modal__content-button3">Okay</a>
+    <div class="modal3">
+        <div class="modal__content3">
+            <h1 class="modal__content-heading13">Kindly add the description and value of your transaction!!!</h1>
+            <a href="#" class="modal__content-button3">Okay</a>
+        </div>
     </div>
-</div>
     <script src="src/js/uicontroller.js"></script>
     <script src="src/js/income.js"></script>
     <script src="src/js/expense.js"></script>
     <script src="src/js/budget.js"></script>
     <script src="src/js/app.js"></script>
-    
 </body>
 </html>

@@ -95,10 +95,8 @@ body {
 .budget__income--percentage,
 .budget__expenses--percentage {
     float: left;
-    width: 34px;
     font-size: 11px;
     padding: 3px 0;
-    margin-left: 10px;
 }
 
 .budget__expenses--percentage {
@@ -311,18 +309,6 @@ h2 {
     border-radius: 0.5rem;
     text-align: center;
 }
-/* .close-button {
-    float: right;
-    width: 1.5rem;
-    line-height: 1.5rem;
-    text-align: center;
-    
-    border-radius: 0.25rem;
-    background-color: lightgray;
-}
-.close-button:hover {
-    background-color: darkgray;
-} */
 
 .modal__content-button3:link,
 .modal__content-button3:visited,
@@ -369,10 +355,6 @@ h2 {
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
-.item-delete {
-    /* position: absolute; */
-}
-
 .fa-remove {
     color: white;
     position: absolute;
@@ -390,31 +372,18 @@ h2 {
     transform: translateY(3px);    
 }
 
-
-
-/* .transaction-item{
-    background-color:lightblue;
-    
-} */
-
-/* /Transaction List*/
-
 .inc-item,
 .inc-item:link,
 .inc-item:visited {
-    /* text-transform: uppercase; */
         text-decoration: none;
         padding: .5rem 4rem;
-        /* display: inline-block; */
         border-radius: 10rem;
         transition: all .2s;
         background-color: #28b9b5;
         list-style:none;
-        margin-bottom: 10px; /*****fix later *****/
+        margin-bottom: 10px; 
         color: white;
         position: relative;
-        /* position: absolute; */
-        /* text-align: center; */
         transition: transform 0.3s ease;
 }
 
@@ -426,19 +395,15 @@ h2 {
 .exp-item,
 .exp-item:link,
 .exp-item:visited {
-    /* text-transform: uppercase; */
         text-decoration: none;
         padding: .5rem 4rem;
-        /* display: inline-block; */
-        /* display: block; */
         border-radius: 10rem;
         transition: all .2s;
         background-color: #ff5049;
         list-style:none;
-        margin-bottom: 10px; /*****fix later *****/
+        margin-bottom: 10px; 
         color: white;
         position: relative;
-        /* position: absolute; */
         transition: transform 0.3s ease;
 
 }
@@ -447,107 +412,3 @@ h2 {
     background-color: #cc0700;
      transform: scale(1.1);
 }
-/* 
-.fa {
-    position: relative;
-    right: .5rem;
-}
-/* .container { */
-    /* position: absolute; */
-}   
-/* .btn {
-    &,
-    &:link,
-    &:visited {
-        text-transform: uppercase;
-        text-decoration: none;
-        padding: 1.5rem 4rem;
-        display: inline-block;
-        border-radius: 10rem;
-        transition: all .2s;
-        position: relative;
-        font-size: $default-font-size;
-
-        //Change for the <button> element
-        border: none;
-        cursor: pointer;
-    }
-    
-    &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 1rem 2rem rgba($color-black,.2);
-
-        &::after {
-            transform: scaleX(1.4) scaleY(1.6);
-            opacity: 0;
-        }
-    }
-    
-    &:active,
-    &:focus {
-        outline: none;
-        transform: translateY(-1px);
-        box-shadow: 0 .5rem 1rem rgba($color-black,.2);
-    }
-    
-    &--white {
-        background-color: $color-white;
-        color: $color-grey-dark;
-
-        &::after {
-            background-color: $color-white;
-        }
-    }
-
-    &--green {
-        background-color: $color-primary;
-        color: $color-white;
-
-        &::after {
-            background-color: $color-primary;
-        }
-    }
-    
-    &::after {
-        content: "";
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-        border-radius: 10rem;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        transition: all .4s;
-    }
-    
-    &--animated {
-        animation: moveInBottom .5s ease-out .75s;
-        animation-fill-mode: backwards;
-    }
-}
-
-.btn-text {
-    &:link,
-    &:visited {
-        font-size: $default-font-size;
-        color: $color-primary;
-        display: inline-block;
-        text-decoration: none;
-        border-bottom: 1px solid $color-primary;
-        padding: 3px;
-        transition: all .2s;
-    }
-
-    &:hover {
-        background-color: $color-primary;
-        color: $color-white;
-        box-shadow: 0 1rem 2rem rgba($color-black, .15);
-        transform: translateY(-2px);
-    }
-
-    &:active {
-        box-shadow: 0 .5rem 1rem rgba($color-black, .15);
-        transform: translateY(0);
-    }
-} */

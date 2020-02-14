@@ -1,6 +1,6 @@
 class Uicontroller {
     constructor() {
-        this.type = '.add__type' ;
+        this.type = '.add__type';
         this.description = '.add__description';
         this.value = '.add__value';
         this.inputBtn = '.add__btn';
@@ -16,37 +16,32 @@ class Uicontroller {
             value: document.querySelector(this.value).value,
             uniqueId: Math.round((Math.random() * 100))
         }
-
-   
     };
 
-     // Hopefully the delete item method
-    domstrings(){
+    domstrings() {
         return {
-       type: this.type,
-       description: this.description,
-       value: this.value,
-       inputBtn: this.inputBtn,
-       deleteItembtn: this.deleteItembtn,
-       insertUlLi: this.insertUlLi ,
-       deleteBtn: this.deleteBtn
+            type: this.type,
+            description: this.description,
+            value: this.value,
+            inputBtn: this.inputBtn,
+            deleteItembtn: this.deleteItembtn,
+            insertUlLi: this.insertUlLi,
+            deleteBtn: this.deleteBtn
         }
     }
 
     displayItemsOnUi(input, transactionType, type) {
-        
+
         // create li element
         const li = document.createElement('li');
-        
+
         //Add Classletclassdeterinethecolorofthetransaction
-        if (type === "inc") {           
+        if (type === "inc") {
             li.className = "inc-item";
-        } 
-        
-        else if(type ==="exp") {
+        } else if (type === "exp") {
             li.className = "exp-item";
         }
-        
+
         // Add ID
         li.id = `item-${input.uniqueId}-${input.value}`;
 
@@ -64,9 +59,9 @@ class Uicontroller {
         document.querySelector(this.value).value = '';
         document.querySelector(this.description).value = '';
     }
-   
-    displayCalculatedValuesOnUi( budgetValues ) {
-        
+
+    displayCalculatedValuesOnUi(budgetValues) {
+
         document.querySelector(".budget__value").innerHTML = budgetValues.currentBalance;
         document.querySelector(".budget__income--value").innerHTML = budgetValues.income;
         document.querySelector(".budget__expenses--value").innerHTML = budgetValues.expense;
